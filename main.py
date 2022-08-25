@@ -19,21 +19,21 @@ def compare_numbers(my_lucky_numbers: set, drawn_numbers: set):
     return bool(my_lucky_numbers == drawn_numbers)
 
 
-def calculate_time(weekly_frequency, draw_number):
+def calculate_time(weekly_frequency, draws):
     """Calculate time in years assuming some weekly frequency"""
-    weeks = draw_number / weekly_frequency
+    weeks = draws / weekly_frequency
     years = round(weeks / 52, 2)
     return f"Wygrana zajęła Ci {years:,.2f} lat."
 
 
-def show_result(prize, cost, draw_number, weekly_frequency):
+def show_result(prize, cost, draws, weekly_frequency):
     """Print simulation results"""
-    total_cost = cost * draw_number
+    total_cost = cost * draws
 
-    congrats = f'Brawo, wygrałeś {prize:,.0f} PLN w {draw_number:,.0f} losowaniach)\n'
+    congrats = f'Brawo, wygrałeś {prize:,.0f} PLN w {draws:,.0f} losowaniach)\n'
     costs = f'Koszt zakładów wyniósł {total_cost:,.0f} PLN\n'
     result = f'Twój wynik to: {prize-total_cost:,.0f} PLN\n'
-    time = calculate_time(weekly_frequency, draw_number)
+    time = calculate_time(weekly_frequency, draws)
 
     return congrats + costs + result + time
 
@@ -44,17 +44,16 @@ def simulate():
     prize = 8000000
     cost = 3
     weekly_frequency = 3
-    draw_number = 0
+    draws = 0
     result = False
 
     print(f'Moje szczęśliwe liczby to: {sorted(list(my_lucky_numbers))}')
 
     while result is not True:
-        draw_number += 1
-        drawn_numbers = draw()
-        result = compare_numbers(my_lucky_numbers, drawn_numbers)
+        draws += 1
+        result = compare_numbers(my_lucky_numbers, draw())
 
-    print(show_result(prize, cost, draw_number, weekly_frequency))
+    print(show_result(prize, cost, draws, weekly_frequency))
 
 
 if __name__ == "__main__":
