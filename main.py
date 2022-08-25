@@ -22,8 +22,7 @@ def compare_numbers(my_lucky_numbers: set, drawn_numbers: set):
 def calculate_time(weekly_frequency, draws):
     """Calculate time in years assuming some weekly frequency"""
     weeks = draws / weekly_frequency
-    years = round(weeks / 52, 2)
-    return f"Wygrana zajęła Ci {years:,.2f} lat."
+    return round(weeks / 52, 2)
 
 
 def show_result(prize, cost, draws, weekly_frequency):
@@ -33,7 +32,7 @@ def show_result(prize, cost, draws, weekly_frequency):
     congrats = f'Brawo, wygrałeś {prize:,.0f} PLN w {draws:,.0f} losowaniach)\n'
     costs = f'Koszt zakładów wyniósł {total_cost:,.0f} PLN\n'
     result = f'Twój wynik to: {prize-total_cost:,.0f} PLN\n'
-    time = calculate_time(weekly_frequency, draws)
+    time = f"Wygrana zajęła Ci {calculate_time(weekly_frequency, draws):,.2f} lat."
 
     return congrats + costs + result + time
 
