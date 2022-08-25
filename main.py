@@ -1,5 +1,4 @@
 from random import randint
-import timeit
 
 def simulate():
 
@@ -8,7 +7,6 @@ def simulate():
     cost = 3
 
     def draw():
-        i = 0
         drawn_numbers = set()
 
         while len(drawn_numbers) < 6:
@@ -28,7 +26,9 @@ def simulate():
         result = draw()
 
     total_cost = i * cost
-    print(f'Brawo, wygrałeś {prize:,.0f} PLN w {i:,.0f} losowaniach\nKoszt zakładów wyniósł {total_cost:,.0f} PLN\nTwój wynik to: {prize-total_cost:,.0f} PLN')
+    print(f'Brawo, wygrałeś {prize:,.0f} PLN w {i:,.0f} losowaniach)')
+    print(f'Koszt zakładów wyniósł {total_cost:,.0f} PLN')
+    print(f'Twój wynik to: {prize-total_cost:,.0f} PLN')
 
 
 if __name__ == "__main__":
