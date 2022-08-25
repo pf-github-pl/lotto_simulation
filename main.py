@@ -3,7 +3,7 @@ import timeit
 
 def simulate():
 
-    my_lucky_numbers = sorted([13, 8, 4, 34, 26, 44])
+    my_lucky_numbers = {13, 8, 4, 34, 26, 44}
     prize = 8000000
     cost = 3
 
@@ -15,13 +15,13 @@ def simulate():
             number = randint(1, 49)
             if number not in drawn_numbers:
                 drawn_numbers.add(number)
-        if set(my_lucky_numbers) == drawn_numbers:
+        if my_lucky_numbers == drawn_numbers:
             return True
 
     i = 0
     result = False
 
-    print(f'Moje szczęśliwe liczby to: {my_lucky_numbers}')
+    print(f'Moje szczęśliwe liczby to: {sorted(list(my_lucky_numbers))}')
 
     while result is not True:
         i += 1
