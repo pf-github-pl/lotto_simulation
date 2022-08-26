@@ -1,18 +1,12 @@
 """Simulate lotto lottery results"""
 
-from random import randint
+from random import sample
 from math import ceil
 
 
-def draw():
-    """Return a set of 6 numbers from range 1-49"""
-    drawn_numbers = set()
-
-    while len(drawn_numbers) < 6:
-        number = randint(1, 50)
-        if number not in drawn_numbers:
-            drawn_numbers.add(number)
-    return drawn_numbers
+def draw(numbers):
+    """Return a set of 6 unique numbers from given sequence"""
+    return set(sample(numbers, k=6))
 
 
 def compare_numbers(my_lucky_numbers: set, drawn_numbers: set):
@@ -44,6 +38,7 @@ def show_result(prize, cost, draws, weekly_frequency):
 
 def simulate():
     """Run lotto lottery simulation"""
+    numbers = range(1, 50)
     my_lucky_numbers = {13, 8, 4, 34, 26, 44}
     prize = 8000000
     cost = 3
@@ -55,7 +50,7 @@ def simulate():
 
     while result is not True:
         draws += 1
-        result = compare_numbers(my_lucky_numbers, draw())
+        result = compare_numbers(my_lucky_numbers, draw(numbers))
 
     print(show_result(prize, cost, draws, weekly_frequency))
 
