@@ -1,6 +1,7 @@
 """Simulate lotto lottery results"""
 
 from random import randint
+from math import ceil
 
 
 def draw():
@@ -20,9 +21,13 @@ def compare_numbers(my_lucky_numbers: set, drawn_numbers: set):
 
 
 def calculate_time(weekly_frequency, draws):
-    """Calculate time in years assuming some weekly frequency"""
-    weeks = draws / weekly_frequency
-    return round(weeks / 52, 2)
+    """Calculate time in years, months, weeks and days assuming given weekly frequency"""
+    days = draws / weekly_frequency * 7
+    years_rem = int(days // 365)
+    months_rem = int(days % 365 // 30)
+    weeks_rem = int(days % 365 % 30 // 7)
+    days_rem = int(ceil(days % 365 % 30 % 7))
+    return f'{years_rem} lat, {months_rem} miesięcy, {weeks_rem} tygodni, {days_rem} dni'
 
 
 def show_result(prize, cost, draws, weekly_frequency):
@@ -32,7 +37,7 @@ def show_result(prize, cost, draws, weekly_frequency):
     congrats = f'Brawo, wygrałeś {prize:,.0f} PLN w {draws:,.0f} losowaniach)\n'
     costs = f'Koszt zakładów wyniósł {total_cost:,.0f} PLN\n'
     result = f'Twój wynik to: {prize-total_cost:,.0f} PLN\n'
-    time = f"Wygrana zajęła Ci {calculate_time(weekly_frequency, draws):,.2f} lat."
+    time = f"Wygrana zajęła Ci {calculate_time(weekly_frequency, draws)}."
 
     return congrats + costs + result + time
 
