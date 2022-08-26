@@ -9,9 +9,9 @@ def draw(numbers):
     return set(sample(numbers, k=6))
 
 
-def compare_numbers(my_lucky_numbers: set, drawn_numbers: set):
+def compare_numbers(my_lucky_numbers: set, drawing_algorithm):
     """Compare two sets and return boolean"""
-    return bool(my_lucky_numbers == drawn_numbers)
+    return bool(my_lucky_numbers == drawing_algorithm)
 
 
 def calculate_time(weekly_frequency, draws):
