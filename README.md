@@ -1,5 +1,6 @@
 # Lotto simulation
-Symulator gry w lotto. Przy każdym uruchomieniu losuje 6 liczb do momentu, gdy trafi zestaw zdefiniowany w zmiennej `my_lucky_numbers`.
+Symulator gry w lotto.\
+Przy każdym uruchomieniu losuje 6 liczb do momentu, gdy trafi zestaw zdefiniowany w zmiennej `my_lucky_numbers`.
 
 ### Założenia:
 - `weekly_frequency` - liczba losowań w tygodniu,
